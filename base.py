@@ -78,6 +78,23 @@ def read_tree (tree_oid):
             f.write (data.get_object (oid))
 
 
+# tree 29109329e9012921091290219
+# author co
+# time 2025 bla bla
+
+# this is the commit message!    
+
+# we will create a new ugit commit command that will accept a commit message,
+# snapshot the current directory using ugitwrite-tree and save the resulting object.
+
+
+def commit(message):
+    commit = f'tree {write_tree()}\n'
+    commit += '\n'  
+    commit += f'{message}\n'
+
+    return data.hash_object(commit.encode(), 'commit')
+
 def is_ignored (path):
     return '.ugit' in path.split ('/')
 
